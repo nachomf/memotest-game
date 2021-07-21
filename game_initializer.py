@@ -1,20 +1,21 @@
 from game import Game
 from element import Element
 from player import Player
+import random
+import string
 
 class GameInitializer():
-    def disorder(self, elements):
-        import random
-        return random.sample(elements,len(elements))
+    def disorder(self, elements): return random.sample(elements,len(elements))
     
     def initialize_elements(self):
         names = range(1, self.element_count + 1)
 
         values = []
-        for value in range(1, int(self.element_count/2) + 1):
+        for value in range(0, int(self.element_count/2)):
             values.append(value)
             values.append(value)
-        #values = self.disorder(values)
+        values = self.disorder(values)
+        values = map(lambda v: string.ascii_uppercase[v], values)
 
         elements = []
         for name, value in zip(names,values):
