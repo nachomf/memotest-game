@@ -1,10 +1,17 @@
 class Element():
     def __init__(self, name, value):
-        self.name = name
-        self.value = value
+        self.name = str(name)
+        self.value = str(value)
 
-    def print(self):
-        if self.name > 9:
-            print(" [ "+str(self.name)+" ] ", end="")
+    def print(self, player):
+        name = ""
+        
+        if (player.already_discover(self.value)):
+            name = " X"
+        elif len(self.name) > 1:
+            name = self.name
         else:
-            print(" [  "+str(self.name)+" ] ", end="")
+            name = " "+self.name
+
+        print(" [ "+name+" ] ", end="")
+      
